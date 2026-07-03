@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishita Rastogi — Research &amp; Writing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14171c;
+    --surface:#1b2027;
+    --surface-2:#232a34;
+    --text:#ece8dd;
+    --text-muted:#8d93a3;
+    --amber:#e8a33d;
+    --teal:#63bfae;
+    --rule:#333a47;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  :focus-visible{
+    outline:2px solid var(--amber);
+    outline-offset:3px;
+  }
+
+  /* ---- ticker ---- */
+  .ticker-wrap{
+    background:#0e1014;
+    border-bottom:1px solid var(--rule);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:9px 0;
+  }
+  .ticker{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.04em;
+    color:var(--amber);
+    padding-left:100%;
+    animation:scroll-left 46s linear infinite;
+  }
+  .ticker span.dim{ color:var(--text-muted); }
+  .ticker span.sep{ color:var(--rule); margin:0 18px; }
+  @keyframes scroll-left{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-100%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ticker{ animation:none; padding-left:24px; }
+  }
+
+  /* ---- layout shell ---- */
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---- hero ---- */
+  header.hero{ padding:72px 0 48px; }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(40px,7vw,64px);
+    line-height:1.04;
+    margin:0 0 6px;
+    letter-spacing:-.01em;
+  }
+  .role{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(18px,2.6vw,22px);
+    color:var(--text-muted);
+    margin:0 0 32px;
+  }
+  .three-things{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin:0 0 28px;
+    padding:0;
+    list-style:none;
+  }
+  .three-things li{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:16px 16px 14px;
+    font-size:14.5px;
+    color:var(--text-muted);
+  }
+  .three-things li::before{
+    content:"—";
+    color:var(--amber);
+    margin-right:6px;
+  }
+  .hero-link{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--amber);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease;
+  }
+  .hero-link:hover{ border-color:var(--amber); }
+
+  /* ---- section headers ---- */
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin:64px 0 6px;
+  }
+  .section-head h2{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:28px;
+    margin:0;
+  }
+  .section-head .count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-muted);
+  }
+  .section-sub{
+    font-size:14px;
+    color:var(--text-muted);
+    margin:0 0 28px;
+    max-width:60ch;
+  }
+  hr.rule{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:8px 0 0;
+  }
+
+  /* ---- best-of grid ---- */
+  .best-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--rule);
+    border:1px solid var(--rule);
+    margin-bottom:8px;
+  }
+  .best-card{
+    background:var(--surface);
+    padding:24px 22px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .best-card .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .best-card a.title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:19px;
+    line-height:1.28;
+    text-decoration:none;
+    color:var(--text);
+    background-image:linear-gradient(var(--amber),var(--amber));
+    background-repeat:no-repeat;
+    background-position:left bottom;
+    background-size:0% 1px;
+    transition:background-size .2s ease;
+  }
+  .best-card a.title:hover{ background-size:100% 1px; }
+  .best-card p{
+    margin:0;
+    font-size:14px;
+    color:var(--text-muted);
+  }
+
+  /* ---- archive ---- */
+  .archive-group{ margin-bottom:6px; }
+  .archive-group h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin:38px 0 2px;
+  }
+  .archive-group .group-note{
+    font-size:13px;
+    color:var(--text-muted);
+    margin:0 0 14px;
+  }
+  .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:24px;
+    padding:16px 0;
+    border-top:1px solid var(--rule);
+  }
+  .row:last-child{ }
+  .row-main{ flex:1; min-width:0; }
+  .row a.title{
+    font-family:'Fraunces',serif;
+    font-size:17px;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--text);
+    display:inline;
+    background-image:linear-gradient(var(--amber),var(--amber));
+    background-repeat:no-repeat;
+    background-position:left bottom;
+    background-size:0% 1px;
+    transition:background-size .2s ease;
+  }
+  .row a.title:hover{ background-size:100% 1px; }
+  .row p{
+    margin:6px 0 0;
+    font-size:14px;
+    color:var(--text-muted);
+    max-width:58ch;
+  }
+  .row .arrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--rule);
+    padding-top:3px;
+    flex-shrink:0;
+  }
+  .row:hover .arrow{ color:var(--amber); }
+
+  footer{
+    margin-top:80px;
+    padding:36px 0 60px;
+    border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer a{ color:var(--teal); text-decoration:none; }
+  footer a:hover{ text-decoration:underline; }
+
+  @media (max-width:640px){
+    .three-things{ grid-template-columns:1fr; }
+    .best-grid{ grid-template-columns:1fr; }
+    header.hero{ padding:48px 0 32px; }
+    .row{ flex-direction:column; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span>ARE L2S REALLY SECURED BY ETHEREUM</span><span class="sep">/</span>
+    <span class="dim">shared by RYAN SEAN ADAMS</span><span class="sep">·</span>
+    <span>STATE OF CONFIDENTIAL AI 2025</span><span class="sep">/</span>
+    <span class="dim">for PHALA NETWORK</span><span class="sep">·</span>
+    <span>THE PERP DEX WARS OF 2025</span><span class="sep">/</span>
+    <span class="dim">as STACY MUUR</span><span class="sep">·</span>
+    <span>BLOBONOMICS &amp; THE NEW ATTACK SURFACE</span><span class="sep">/</span>
+    <span class="dim">for HAZEFLOW</span><span class="sep">·</span>
+    <span>DUNE: THE ULTIMATE GUIDE</span><span class="sep">/</span>
+    <span class="dim">onchain research 101</span><span class="sep">·&nbsp;&nbsp;</span>
+    <span>ARE L2S REALLY SECURED BY ETHEREUM</span><span class="sep">/</span>
+    <span class="dim">shared by RYAN SEAN ADAMS</span><span class="sep">·</span>
+    <span>STATE OF CONFIDENTIAL AI 2025</span><span class="sep">/</span>
+    <span class="dim">for PHALA NETWORK</span><span class="sep">·</span>
+    <span>THE PERP DEX WARS OF 2025</span><span class="sep">/</span>
+    <span class="dim">as STACY MUUR</span><span class="sep">·</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Research &amp; Writing — Crypto / DeFi / Onchain</p>
+    <h1>Ishita Rastogi</h1>
+    <p class="role">Research analyst &amp; ghostwriter for Web3 protocols and their founders</p>
+
+    <ul class="three-things">
+      <li>I learn fast, ask a lot of questions, and go deep until I understand a topic inside out.</li>
+      <li>I use Dune MCP, Blockscout MCP, Herd, and Surf Skill to accelerate onchain research.</li>
+      <li>I'm an avid reader — I genuinely love researching, writing, and learning new things.</li>
+    </ul>
+
+    <a class="hero-link" href="https://x.com/Ishita_30/status/2010678866738880753?s=20" target="_blank" rel="noopener">→ my recent take: LLM &gt; SEO (SEO is still important)</a>
+  </header>
+
+  <!-- ============ BEST OF MY WORK ============ -->
+  <section>
+    <div class="section-head">
+      <h2>Best of my work</h2>
+      <span class="count">06</span>
+    </div>
+    <p class="section-sub">A short list, pulled from the full archive below.</p>
+    <hr class="rule">
+
+    <div class="best-grid">
+      <div class="best-card">
+        <span class="tag">Hazeflow · Featured</span>
+        <a class="title" href="https://research.hazeflow.xyz/p/are-l2s-really-secured-by-ethereum" target="_blank" rel="noopener">Are L2s Really Secured by Ethereum?</a>
+        <p>Unpacks how rollup security actually depends on proof systems and data availability, not the Ethereum name alone. Shared by Ryan Sean Adams and other core Ethereum voices.</p>
+      </div>
+
+      <div class="best-card">
+        <span class="tag">Phala Network</span>
+        <a class="title" href="https://research.hazeflow.xyz/p/the-state-of-confidential-ai-in-2025" target="_blank" rel="noopener">State of Confidential AI in 2025</a>
+        <p>Maps where TEEs, zero-knowledge proofs, and AI inference intersect, and what confidential compute actually unlocks for AI workloads.</p>
+      </div>
+
+      <div class="best-card">
+        <span class="tag">Phala Network</span>
+        <a class="title" href="https://phala.com/posts/Phala-GPU-TEE-Deep-Di" target="_blank" rel="noopener">GPU TEE Deep Dive: Securing AI at the Hardware Layer</a>
+        <p>A technical primer on how GPU-based trusted execution environments secure AI workloads at the hardware level.</p>
+      </div>
+
+      <div class="best-card">
+        <span class="tag">Ghostwriter · Stacy Muur</span>
+        <a class="title" href="https://x.com/stacy_muur/status/1990358416477602163?s=20" target="_blank" rel="noopener">The Perp DEX Wars of 2025</a>
+        <p>Compares Hyperliquid, Aster, Lighter, and EdgeX on liquidity and incentive design — the thread that first flagged wash-trading patterns on Aster.</p>
+      </div>
+
+      <div class="best-card">
+        <span class="tag">Hazeflow</span>
+        <a class="title" href="https://research.hazeflow.xyz/p/blobonomics-and-the-new-attack-surface" target="_blank" rel="noopener">Blobonomics &amp; the New Attack Surface</a>
+        <p>Traces how Ethereum's data-availability layer changed after blobs, and the new attack surface that came with it.</p>
+      </div>
+
+      <div class="best-card">
+        <span class="tag">Ghostwriter · Stacy Muur</span>
+        <a class="title" href="https://x.com/stacy_muur/status/1910371934178582713?s=20" target="_blank" rel="noopener">Dune: The Ultimate Guide</a>
+        <p>A practical walkthrough of Dune Analytics for onchain research, from query structure to building a working dashboard.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FULL ARCHIVE ============ -->
+  <section>
+    <div class="section-head" style="margin-top:88px;">
+      <h2>Full archive</h2>
+      <span class="count">by client &amp; category</span>
+    </div>
+    <hr class="rule">
+
+    <div class="archive-group">
+      <h3>Client — Phala Network</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://phala.com/posts/Phala-GPU-TEE-Deep-Di" target="_blank" rel="noopener">GPU TEE Deep Dive: Securing AI at the Hardware Layer</a>
+          <p>How GPU-based trusted execution environments secure AI workloads at the hardware layer.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://phala.com/posts/what-does-it-take-to-build-safe-agi" target="_blank" rel="noopener">What Does It Take to Build Safe AGI?</a>
+          <p>Looks at the infrastructure and verification problems standing between today's models and safe AGI.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://research.hazeflow.xyz/p/the-state-of-confidential-ai-in-2025" target="_blank" rel="noopener">State of Confidential AI in 2025</a>
+          <p>Where TEEs, ZK proofs, and AI inference meet, and what confidential compute unlocks.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Client — Raiku</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/1995538734935150940?s=20" target="_blank" rel="noopener">Solana Downtime Is a Meme</a>
+          <p>Separates the reputation from the current reliability data.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2000931378339152154?s=20" target="_blank" rel="noopener">Solana Programming Model</a>
+          <p>Breaks down how Solana's account-based model shapes execution and throughput.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2010728528749252912?s=20" target="_blank" rel="noopener">Solana App Revenue</a>
+          <p>A look at which Solana applications actually generate sustainable revenue.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2015812917921280466?s=20" target="_blank" rel="noopener">Solana Execution Limits</a>
+          <p>Explains the compute and state constraints that shape what can run onchain.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2018360253641863244?s=20" target="_blank" rel="noopener">Alpenglow Upgrade</a>
+          <p>Covers what Alpenglow changes about Solana's consensus and finality.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2023553655626998080?s=20" target="_blank" rel="noopener">MCL vs PBS</a>
+          <p>Compares multiple concurrent leaders against proposer-builder separation as block-production models.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2031024285360251195?s=20" target="_blank" rel="noopener">Are Solana Validators Profitable?</a>
+          <p>Runs the numbers on validator costs versus staking and MEV rewards.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/raikucom/status/2069062991673229457?s=20" target="_blank" rel="noopener">How to Pick an LST?</a>
+          <p>A framework for evaluating Solana liquid staking tokens beyond headline APY.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://research.hazeflow.xyz/p/raiku-solving-solanas-biggest-paint" target="_blank" rel="noopener">Raiku: Solving Solana's Biggest Pain Points</a>
+          <p>Explains Raiku's blockspace reservation model and the execution guarantees it gives builders.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://research-content-ruby.vercel.app/#diagrams" target="_blank" rel="noopener">Supporting Diagrams</a>
+          <p>Visual explainers built to accompany the Raiku / Solana thread series.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Ghostwriter content — Stacy Muur</h3>
+      <div class="group-note">Web3 KOL persona I write for, operating through Green Dots.</div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1898307251233780079" target="_blank" rel="noopener">Hyperliquid Deep Dive</a>
+          <p>Breaks down Hyperliquid's architecture, order book design, and fee model.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1893206587986137480" target="_blank" rel="noopener">Chain Abstraction Overview</a>
+          <p>Walks through the different approaches protocols are taking to hide chain complexity from users.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1892650191536472210" target="_blank" rel="noopener">Open Intent Framework</a>
+          <p>Explains the open-intents standard for cross-chain execution. Retweeted by Ethereum's own account.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1990358416477602163?s=20" target="_blank" rel="noopener">The Perp DEX Wars of 2025: Hyperliquid, Aster, Lighter, and EdgeX</a>
+          <p>Compares the leading perp DEXs on liquidity and incentives; first flagged wash-trading patterns on Aster.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1912461147648688500?s=20" target="_blank" rel="noopener">Where Is Onchain Volume Rotating? (Jan '24 – Mar '25)</a>
+          <p>Tracks where trading volume moved across chains over a 14-month window, using onchain data.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1910371934178582713?s=20" target="_blank" rel="noopener">Dune: The Ultimate Guide</a>
+          <p>A practical walkthrough of Dune Analytics, from query structure to dashboard building.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://x.com/stacy_muur/status/1904136427811561799?s=20" target="_blank" rel="noopener">Web3 Wallets Roast</a>
+          <p>A blunt, side-by-side critique of wallet UX across the ecosystem.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Featured coverage</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://www.decentralised.co/p/will-all-l1s-move-to-ethereum" target="_blank" rel="noopener">Will All L1s Move to Ethereum?</a>
+          <p>A piece I contributed to that was featured on the Ethereum website.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://research.hazeflow.xyz/p/are-l2s-really-secured-by-ethereum" target="_blank" rel="noopener">Are L2s Really Secured by Ethereum?</a>
+          <p>Shared by Ryan Sean Adams (<a href="https://x.com/RyanSAdams/status/1964016268656177507?s=20" target="_blank" rel="noopener" style="text-decoration:underline">post</a>) and hubkotl (<a href="https://x.com/hubkotl/status/1964027932306706803?s=20" target="_blank" rel="noopener" style="text-decoration:underline">post</a>).</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Hazeflow — additional research</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://research.hazeflow.xyz/p/blobonomics-and-the-new-attack-surface" target="_blank" rel="noopener">Blobonomics &amp; the New Attack Surface</a>
+          <p>How Ethereum's data-availability layer is hardening after blobs, and what's still exposed.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Layer 2 research</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://app.t2.world/article/cm1dfkb61113363221mc9excti2x" target="_blank" rel="noopener">Not All L2s Prioritize Ethereum's Security Equally!</a>
+          <p>Ranks rollups by how much of Ethereum's security guarantee they actually inherit.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://app.t2.world/article/cm92zalxf00zm6w1pg5ah31nd" target="_blank" rel="noopener">Rollups, Reality, and the "Secured by Ethereum" Illusion</a>
+          <p>Questions the marketing claim against what proof systems and DA setups actually deliver.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://mirror.xyz/0x4dc8b342dAe79b0426a05c4fb9d95eD1f9b97144/P0H7f8tSc-WLCthEeEsAeimD-rQ4WE2T94AwfmkcLgU" target="_blank" rel="noopener">Rollup Decentralisation: What Stage Are We Really At?</a>
+          <p>Audits sequencer and prover decentralization claims against what's actually live.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://mirror.xyz/0x4dc8b342dAe79b0426a05c4fb9d95eD1f9b97144/qe36fcgfuzfFSNnmsRPEo5SCaX94nl5mDgbJPBA-e-g" target="_blank" rel="noopener">Are Bitcoin L2s Real?</a>
+          <p>Tests the "Bitcoin L2" label against how much of these systems actually settle to Bitcoin.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://mirror.xyz/0x4dc8b342dAe79b0426a05c4fb9d95eD1f9b97144/3-NLGyJ6kytwJu7ewMU-D3KeEB-365Bq0P65pq7iHJ4" target="_blank" rel="noopener">Rollup Sequencers</a>
+          <p>Explains what sequencers do, why they're centralized today, and what decentralizing them requires.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://appchain-analytics.vercel.app/daily-transactions" target="_blank" rel="noopener">Layer 2 Analytics (site)</a>
+          <p>A daily-transactions dashboard tracking L2 activity. Not actively maintained, so it may load slowly.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://docs.google.com/document/d/1qXQFfG2ZcPLq4sGg5epdUuP4B0fklDzv05BAmbnU8Qg/edit?usp=sharing" target="_blank" rel="noopener">Zero Knowledge Research</a>
+          <p>Working notes on ZK proof systems and their tradeoffs.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/arrays-in-cairo-d9b8fcfc9ad1" target="_blank" rel="noopener">Arrays in Cairo</a>
+          <p>A short technical note on how arrays work in Cairo, StarkNet's programming language.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Web3 — general</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/proof-of-work-with-demonstration-3c5805e376b9" target="_blank" rel="noopener">Proof of Work, With Demonstration</a>
+          <p>Explains PoW mining mechanics with a worked example.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/state-of-crypto-consumer-apps-61c730ea15ad" target="_blank" rel="noopener">State of Crypto Consumer Apps</a>
+          <p>Surveys what's actually driving usage in consumer crypto apps versus what's just noise.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/the-ronin-bridge-hack-7cbe48b23a04" target="_blank" rel="noopener">The Ronin Bridge Hack</a>
+          <p>Walks through how the exploit happened and what it exposed about validator trust assumptions.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/chainlink-and-introduction-to-price-feeds-c96fe508c148" target="_blank" rel="noopener">Chainlink and Introduction to Price Feeds</a>
+          <p>Covers how decentralized price oracles work and why they matter for DeFi.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Web2 — general &amp; development</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/design-and-analysis-of-algorithms-19a9429bdf0a" target="_blank" rel="noopener">Design and Analysis of Algorithms</a>
+          <p>Notes on core algorithm design paradigms and how to evaluate them.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/an-introduction-to-reactjs-24bd0b2bedad" target="_blank" rel="noopener">An Introduction to ReactJS</a>
+          <p>A beginner-friendly walkthrough of React's core concepts.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://medium.com/@ishitarastogi/web-scraping-using-python-5fea1c5d0eb7" target="_blank" rel="noopener">Web Scraping Using Python</a>
+          <p>A practical guide to scraping structured data with Python.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://ishita.hashnode.dev/type-conversion-and-coercion-in-javascript" target="_blank" rel="noopener">Type Conversion and Coercion in JavaScript</a>
+          <p>Clears up when and why JavaScript converts types implicitly.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://ishita.hashnode.dev/all-about-splice-method-in-javascript" target="_blank" rel="noopener">All About the Splice Method</a>
+          <p>A close look at Array.splice() and where it's easy to misuse.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+    <div class="archive-group">
+      <h3>Open source &amp; client blog</h3>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://github.com/NethermindEth/Forta-Agents" target="_blank" rel="noopener">Forta Agents (Nethermind)</a>
+          <p>Open-source contribution to Forta's detection bot library.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://www.gelato.network/blog" target="_blank" rel="noopener">Gelato Network — Blog</a>
+          <p>GTM and developer-relations writing produced during my time at Gelato.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+      <div class="row">
+        <div class="row-main">
+          <a class="title" href="https://www.gelato.network/blog?category=use-cases" target="_blank" rel="noopener">Gelato Network — Use Cases</a>
+          <p>Applied use-case writeups for Gelato's automation and account abstraction tooling.</p>
+        </div><span class="arrow">↗</span>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <span>Ishita Rastogi — Research &amp; Writing</span>
+    <span><a href="https://x.com/Ishita_30" target="_blank" rel="noopener">@Ishita_30</a> </span>
+  </footer>
+
+</div>
+
+</body>
+</html>
