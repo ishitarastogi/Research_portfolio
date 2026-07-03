@@ -125,6 +125,35 @@
   }
   .hero-link:hover{ border-color:var(--amber); }
 
+  /* ---- companies strip ---- */
+  ul.companies{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    list-style:none;
+    margin:0 0 8px;
+    padding:0;
+  }
+  ul.companies li{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.03em;
+    color:var(--text);
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    padding:8px 13px;
+    white-space:nowrap;
+  }
+  ul.companies li::before{
+    content:"//";
+    color:var(--amber);
+    margin-right:7px;
+  }
+  ul.companies .dim-inline{
+    color:var(--text-muted);
+  }
+
   /* ---- section headers ---- */
   .section-head{
     display:flex;
@@ -309,11 +338,24 @@
     <ul class="three-things">
       <li>I learn fast, ask a lot of questions, and go deep until I understand a topic inside out.</li>
       <li>I use Dune MCP, Blockscout MCP, Herd, and Surf Skill to accelerate onchain research.</li>
-      <li>I'm an avid reader — I genuinely love researching, writing, and learning new things.</li>
+      <li>I'm an avid reader, I genuinely love researching, writing, and learning new things.</li>
     </ul>
 
     <a class="hero-link" href="https://x.com/Ishita_30/status/2010678866738880753?s=20" target="_blank" rel="noopener">→ my recent take: LLM &gt; SEO (SEO is still important)</a>
   </header>
+
+  <!-- ============ COMPANIES ============ -->
+  <section>
+    <p class="eyebrow" style="margin-top:0;">Worked with</p>
+    <ul class="companies">
+      <li>Nethermind</li>
+      <li>Gelato Network</li>
+      <li>Raiku</li>
+      <li>Phala Network</li>
+      <li>Hazeflow</li>
+      <li>Green Dots <span class="dim-inline">(by Stacy Muur)</span></li>
+    </ul>
+  </section>
 
   <!-- ============ BEST OF MY WORK ============ -->
   <section>
@@ -321,7 +363,6 @@
       <h2>Best of my work</h2>
       <span class="count">06</span>
     </div>
-    <p class="section-sub">A short list, pulled from the full archive below.</p>
     <hr class="rule">
 
     <div class="best-grid">
@@ -670,7 +711,7 @@
 
   <footer>
     <span>Ishita Rastogi — Research &amp; Writing</span>
-    <span><a href="https://x.com/Ishita_30" target="_blank" rel="noopener">@Ishita_30</a> </span>
+    <span><a href="https://x.com/Ishita_30" target="_blank" rel="noopener">@Ishita_30</a> · <a href="https://x.com/stacy_muur" target="_blank" rel="noopener">@stacy_muur</a></span>
   </footer>
 
 </div>
